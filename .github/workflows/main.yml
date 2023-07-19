@@ -14,6 +14,8 @@ jobs:
         run: ./test_runner
       - name: Gen COverage
         run: gcovr --root . --exclude test_runner -s --xml -o coverage.xml
+      - name: env
+        run: echo ${{ env.CI }}
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
