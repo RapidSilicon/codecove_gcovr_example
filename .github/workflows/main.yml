@@ -9,7 +9,7 @@ jobs:
       - name: Install dependencies 
         run: sudo apt install -y libgtest-dev && pip3 install gcovr
       - name: Compile 
-        run: g++ -std=c++11 max_element.cpp max_element_test.cpp -o test_runner -lgtest -lgtest_main -pthread
+        run: g++ -std=c++11 -fprofile-arcs -ftest-coverage max_element.cpp max_element_test.cpp -o test_runner -lgtest -lgtest_main -pthread
       - name: Run tests
         run: ./test_runner
       - name: Gen COverage
