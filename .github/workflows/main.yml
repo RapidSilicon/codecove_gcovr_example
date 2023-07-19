@@ -7,11 +7,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install dependencies 
-        run: sudo apt install -y libgtest-dev
+        run: sudo apt install -y libgtest-dev && pip3 install gcovr
       - name: Compile 
         run: g++ -std=c++11 max_element.cpp max_element_test.cpp -o test_runner -lgtest -lgtest_main -pthread
       - name: Run tests
         run: ./test_runner
+      - name: Gen COverage
+        run: gcovr --root . --exclude test_runner_coverage -s
  #     - name: Upload coverage to Codecov
  #       uses: codecov/codecov-action@v3
  #       with:
