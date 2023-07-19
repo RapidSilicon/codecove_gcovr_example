@@ -13,9 +13,9 @@ jobs:
       - name: Run tests
         run: ./test_runner
       - name: Gen COverage
-        run: gcovr --root . --exclude test_runner_coverage -s
- #     - name: Upload coverage to Codecov
- #       uses: codecov/codecov-action@v3
- #       with:
- #         gcov: true
- #         gcov_include: calculator.c
+        run: gcovr --root . --exclude test_runner -s --xml -o coverage.xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+           files: coverage.xml
+           fail_ci_if_error: false
