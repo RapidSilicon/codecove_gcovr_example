@@ -1,2 +1,5 @@
 echo "i am in script"
-echo $CI
+if [[ $CI == true ]]
+then
+  echo "ok"
+fi
